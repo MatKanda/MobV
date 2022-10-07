@@ -2,4 +2,13 @@
     <string name="app_name">MyApp</string>
     <string name="stop">stop</string>
     <string name="start">start</string>
+    <string name="label">label</string>
+    <string name="idk_napis_nieco">Idk, napis nieco</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="zadajte_daje">Zadajte údaje</string>
+    <string name="zadajte_udaje" />
+    <string name="Zadajte_udaje" />
+    <string name="odosla">Odoslať</string>
+    <string name="odoslať">odoslať</string>
 </resources>
