@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.MediaController
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.airbnb.lottie.LottieAnimationView
 
 class MainActivity : AppCompatActivity() {
@@ -14,9 +15,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.firstFragment) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
         navController = navHostFragment.navController
-//
+
+        setupActionBarWithNavController(navController)
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 }

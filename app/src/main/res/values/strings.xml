@@ -11,4 +11,9 @@
     <string name="Zadajte_udaje" />
     <string name="odosla">Odoslať</string>
     <string name="odoslať">odoslať</string>
+    <string name="zadajte_meno">Zadajte meno</string>
+    <string name="zadajte_zem_dlzku_podniku">zadajte zem. dlzku podniku</string>
+    <string name="zadajte_zem_sirku_podniku">zadajte zem. sirku podniku</string>
+    <string name="zadajte_nazov_podniku">zadajte nazov podniku</string>
+    <string name="otvori_mapu">Otvoriť mapu</string>
 </resources>

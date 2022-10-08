@@ -6,36 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/idk_napis_nieco"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:startIconContentDescription="content_description_end_icon"
-        app:startIconDrawable="@drawable/ic_launcher_foreground"
-        tools:ignore="PrivateResource">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText"
+        <EditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="text"
+            android:hint="@string/zadajte_meno"
+            android:gravity="center"
+            />
+        <EditText
+            android:id="@+id/company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            android:inputType="text"
+            android:hint="@string/zadajte_nazov_podniku"
+            android:gravity="center"
+            />
+        <EditText
+            android:id="@+id/latitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/company_name"
+            app:layout_constraintTop_toBottomOf="@+id/company_name"
+            android:inputType="numberDecimal"
+            android:hint="@string/zadajte_zem_sirku_podniku"
+            android:gravity="center"
+            />
+        <EditText
+            android:id="@+id/longitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/latitude"
+            app:layout_constraintTop_toBottomOf="@+id/latitude"
+            android:inputType="numberDecimal"
+            android:hint="@string/zadajte_zem_dlzku_podniku"
+            android:gravity="center"
+            />
         <Button
             android:id="@+id/send_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="@string/odoslať"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/longitude"
+            app:layout_constraintTop_toBottomOf="@+id/longitude" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
