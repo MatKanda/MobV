@@ -1,5 +1,5 @@
 package com.example.myapp.process_json
 
-data class Pub (val name: String, val latitude: String, val longitude: String){
+data class Pub (val name: String, val lat: String, val lon: String, val tags: Map<String, String>){
 
 }
