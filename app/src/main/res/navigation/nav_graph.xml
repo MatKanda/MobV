@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/firstFragment">
+    app:startDestination="@id/companiesList">
     <fragment
         android:id="@+id/firstFragment"
         android:name="com.example.myapp.FirstFragment"
@@ -32,4 +32,9 @@
             android:name="latitude"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/companiesList"
+        android:name="com.example.myapp.CompaniesList"
+        android:label="fragment_companies_list_list"
+        tools:layout="@layout/fragment_companies_list_list" />
 </navigation>
