@@ -9,32 +9,30 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.airbnb.lottie.LottieAnimationView
 import android.util.Log
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapp.process_json.Pub
 import com.example.myapp.process_json.PubParent
+import com.example.myapp.process_json.Utils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.example.myapp.process_json.getJsonDataFromAsset
+import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        val jsonFileString = getJsonDataFromAsset(applicationContext, "pubs.json")
+        val utils = Utils()
+        val jsonFileName = "pubs.json"
+        val jsonFileString = utils.getJsonDataFromAsset(applicationContext, jsonFileName)
+
+        var allPubs:MutableList<String> = ArrayList()
         if (jsonFileString != null) {
-            Log.i("data", jsonFileString)
+            allPubs = utils.getJsonData(jsonFileString)
         }
-
-        val gson = Gson()
-        val listPubType = object : TypeToken<PubParent>() {}.type
-
-        var pubs: PubParent = gson.fromJson(jsonFileString, listPubType)
-//        pubs.elements.forEachIndexed { idx, pub -> Log.i("data", "> Item $idx:\n$pub, name:${pub.tags.get("name")}") }
-        pubs.elements.forEachIndexed { idx, pub -> Log.i("data", "> Item $idx:\n, name:${pub.tags.get("name")}, lat: ${pub.lat}, lng: ${pub.lon}") }
-
         System.out.println()
 
-        setContentView(R.layout.activity_main)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
         navController = navHostFragment.navController
