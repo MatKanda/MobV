@@ -19,7 +19,7 @@ class Utils (){
         return jsonString
     }
 
-    fun getJsonData(jsonFileString: String): MutableList<String> {
+    fun getJsonData(jsonFileString: String): List<Pub> {
         val allPubs:MutableList<String> = ArrayList()
 
         Log.i("data", jsonFileString)
@@ -34,6 +34,11 @@ class Utils (){
         }
         System.out.println()
 
-        return allPubs
+//        return allPubs
+        return listOf<Pub>(
+            Pub(1f,"Omg", "12", "15",  hashMapOf<String,String>("jeden" to "jeden", "dva" to "dva")),
+            Pub(2f,"Omg2", "12", "15",  hashMapOf<String,String>("jeden" to "jeden", "dva" to "dva")),
+            Pub(3f,"Omg3", "12", "15",  hashMapOf<String,String>("jeden" to "jeden", "dva" to "dva"))
+        )
     }
 }

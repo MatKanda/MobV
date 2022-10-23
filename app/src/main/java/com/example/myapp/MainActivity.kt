@@ -23,15 +23,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val utils = Utils()
-        val jsonFileName = "pubs.json"
-        val jsonFileString = utils.getJsonDataFromAsset(applicationContext, jsonFileName)
+//        val utils = Utils()
+//        val jsonFileName = "pubs.json"
+//        val jsonFileString = utils.getJsonDataFromAsset(applicationContext, jsonFileName)
+//
+//        var allPubs:MutableList<String> = ArrayList()
+//        if (jsonFileString != null) {
+//            allPubs = utils.getJsonData(jsonFileString)
+//        }
+//        System.out.println()
 
-        var allPubs:MutableList<String> = ArrayList()
-        if (jsonFileString != null) {
-            allPubs = utils.getJsonData(jsonFileString)
-        }
-        System.out.println()
 
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment

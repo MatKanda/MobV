@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/companiesList"
-        android:name="com.example.myapp.CompaniesList"
+        android:name="com.example.myapp.PubsClass"
         android:label="fragment_companies_list_list"
         tools:layout="@layout/fragment_companies_list_list" />
 </navigation>
