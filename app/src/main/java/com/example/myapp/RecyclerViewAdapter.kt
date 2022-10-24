@@ -41,7 +41,7 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: L
         holder.textView.text = pub.tags.get("name")
 
         holder.textView.setOnClickListener{
-            val name = pub.tags.get("name")
+            val name = pub.tags.get("name").orEmpty()
             val longitude = pub.lon
             val latitude = pub.lat
             var openingHours = ""
@@ -63,10 +63,12 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: L
                 website = "Unknown"
             }
 
-            val action = PubsClassDirections.actionCompaniesListToPubDetail(latitude, longitude, openingHours, outdoorSeating, website, latitude)
+            val action = PubsClassDirections.actionCompaniesListToPubDetail(latitude, longitude, openingHours, outdoorSeating, website, name)
             navigation.navigate(action)
 //            navigation.navigate(R.id.action_companiesList_to_pubDetail)
         }
+
+
     }
 
     override fun getItemCount(): Int {

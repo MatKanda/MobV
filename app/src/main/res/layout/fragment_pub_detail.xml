@@ -7,52 +7,119 @@
     tools:context=".PubDetail">
 
     <TextView
-        android:id="@+id/pub_detail_name"
+        android:id="@+id/header_detail_pub_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/pub_name"
+        android:gravity="center"
+        android:textSize="30sp"/>
+    <TextView
+        android:id="@+id/pub_detail_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/header_detail_pub_name"
+        app:layout_constraintTop_toBottomOf="@+id/header_detail_pub_name"
         android:textSize="20sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:paddingBottom="20dp"/>
+    <TextView
+        android:id="@+id/header_detail_pub_lon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/pub_detail_name"
+        app:layout_constraintTop_toBottomOf="@+id/pub_detail_name"
+        android:text="@string/longitude"
+        android:gravity="center"
+        android:textSize="30sp"/>
     <TextView
         android:id="@+id/pub_detail_lon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/header_detail_pub_lon"
+        app:layout_constraintTop_toBottomOf="@+id/header_detail_pub_lon"
         android:textSize="20sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:paddingBottom="20dp"/>
+    <TextView
+        android:id="@+id/header_detail_pub_lat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/pub_detail_lon"
+        app:layout_constraintTop_toBottomOf="@+id/pub_detail_lon"
+        android:text="@string/latitude"
+        android:gravity="center"
+        android:textSize="30sp" />
     <TextView
         android:id="@+id/pub_detail_lat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/header_detail_pub_lat"
+        app:layout_constraintTop_toBottomOf="@+id/header_detail_pub_lat"
         android:textSize="20sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:paddingBottom="20dp"/>
+    <TextView
+        android:id="@+id/header_detail_pub_opening_hours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/pub_detail_lat"
+        app:layout_constraintTop_toBottomOf="@+id/pub_detail_lat"
+        android:text="@string/opening_hours"
+        android:gravity="center"
+        android:textSize="30sp" />
     <TextView
         android:id="@+id/pub_detail_opening_hours"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/header_detail_pub_opening_hours"
+        app:layout_constraintTop_toBottomOf="@+id/header_detail_pub_opening_hours"
         android:textSize="20sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:paddingBottom="20dp"/>
+    <TextView
+        android:id="@+id/header_detail_pub_outdoor_seating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/pub_detail_opening_hours"
+        app:layout_constraintTop_toBottomOf="@+id/pub_detail_opening_hours"
+        android:text="@string/outdoor_seating"
+        android:gravity="center"
+        android:textSize="30sp"/>
     <TextView
         android:id="@+id/pub_detail_outdoor_seating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/header_detail_pub_outdoor_seating"
+        app:layout_constraintTop_toBottomOf="@+id/header_detail_pub_outdoor_seating"
         android:textSize="20sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:paddingBottom="20dp"/>
+    <TextView
+        android:id="@+id/header_detail_pub_website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/pub_detail_outdoor_seating"
+        app:layout_constraintTop_toBottomOf="@+id/pub_detail_outdoor_seating"
+        android:text="@string/website"
+        android:gravity="center"
+        android:textSize="30sp"/>
     <TextView
         android:id="@+id/pub_detail_website"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/header_detail_pub_website"
+        app:layout_constraintTop_toBottomOf="@+id/header_detail_pub_website"
         android:textSize="20sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:paddingBottom="20dp"/>
+    <Button
+        android:id="@+id/delete_pub_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/pub_detail_website"
+        app:layout_constraintTop_toBottomOf="@+id/pub_detail_website"
+        android:text="@string/delete_this_pub"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

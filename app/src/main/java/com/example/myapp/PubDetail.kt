@@ -36,13 +36,19 @@ class PubDetail : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val args : SecondFragmentArgs by navArgs()
+        val args : PubDetailArgs by navArgs()
         val name = args.name
-        val company_name = args.companyName
         val longitude = args.longitude
         val latitude = args.latitude
+        val openingHours = args.openingHours
+        val outdoorSeating = args.outdoorSeating
+        val website = args.website
+        view.findViewById<TextView>(R.id.pub_detail_name).text = name
+        view.findViewById<TextView>(R.id.pub_detail_lat).text = latitude
+        view.findViewById<TextView>(R.id.pub_detail_lon).text = longitude
+        view.findViewById<TextView>(R.id.pub_detail_opening_hours).text = openingHours
+        view.findViewById<TextView>(R.id.pub_detail_outdoor_seating).text = outdoorSeating
+        view.findViewById<TextView>(R.id.pub_detail_website).text = website
 
-        view.findViewById<TextView>(R.id.header_name).text = name
-        view.findViewById<TextView>(R.id.header_company_name).text = company_name
     }
 }

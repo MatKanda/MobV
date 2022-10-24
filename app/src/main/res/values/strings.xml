@@ -32,4 +32,11 @@
     <string name="affirmation14">I will be present in all the moments that this day brings.</string>
     <string name="affirmation15">I will be present in all the moments that this day brings.</string>
     <string name="affirmation16">I will be present in all the moments that this day brings.</string>
+    <string name="pub_name">Pub Name</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="opening_hours">Opening hours</string>
+    <string name="outdoor_seating">Outdoor seating</string>
+    <string name="website">Website</string>
+    <string name="delete_this_pub">Delete this pub</string>
 </resources>
