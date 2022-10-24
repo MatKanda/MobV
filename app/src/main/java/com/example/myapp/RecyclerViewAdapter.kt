@@ -9,7 +9,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.EditText
+import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 
 import com.example.myapp.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.myapp.process_json.Affirmation
@@ -19,7 +21,7 @@ import com.example.myapp.process_json.Pub
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class RecyclerViewAdapter(private val context: PubsClass, private val dataset: List<Pub>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(private val context: PubsClass, private val dataset: List<Pub>, private val navigation: NavController) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.pub_name)
@@ -37,15 +39,41 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: L
 
         val pub = dataset[position]
         holder.textView.text = pub.tags.get("name")
+
         holder.textView.setOnClickListener{
-//            findNavController().navigate(R.id.action_companiesList_to_pubDetail)
+            val name = pub.tags.get("name")
+            val longitude = pub.lon
+            val latitude = pub.lat
+            var openingHours = ""
+            var outdoorSeating = ""
+            var website = ""
+            if (pub.tags.get("opening_hours") != null) {
+                openingHours = pub.tags.get("opening_hours")!!
+            }else{
+                openingHours = "Unknown"
+            }
+            if (pub.tags.get("outdoor_seating") != null) {
+                outdoorSeating = pub.tags.get("outdoor_seating")!!
+            }else{
+                outdoorSeating = "Unknown"
+            }
+            if (pub.tags.get("website") != null) {
+                website = pub.tags.get("website")!!
+            }else{
+                website = "Unknown"
+            }
+
+            val action = PubsClassDirections.actionCompaniesListToPubDetail(latitude, longitude, openingHours, outdoorSeating, website, latitude)
+            navigation.navigate(action)
+//            navigation.navigate(R.id.action_companiesList_to_pubDetail)
         }
-//        holder.textView.text =  context.resources.getString(pub.id.toInt())
     }
 
     override fun getItemCount(): Int {
         return dataset.size;
     }
 
+    private fun prepareData(){
 
+    }
 }

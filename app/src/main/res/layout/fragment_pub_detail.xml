@@ -7,8 +7,52 @@
     tools:context=".PubDetail">
 
     <TextView
+        android:id="@+id/pub_detail_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/pub_detail_lon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/pub_detail_lat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/pub_detail_opening_hours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/pub_detail_outdoor_seating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/pub_detail_website"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:gravity="center"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

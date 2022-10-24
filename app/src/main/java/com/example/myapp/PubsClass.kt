@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.myapp.process_json.Datasource
 import com.example.myapp.process_json.Pub
 import com.example.myapp.process_json.Utils
@@ -36,8 +39,8 @@ class PubsClass : Fragment() {
             allPubs = utils.getJsonData(jsonFileString)
         }
 
-        val recyclerView: RecyclerView  = view.findViewById(R.id.recycler_view)
-        recyclerView.adapter = RecyclerViewAdapter(this, allPubs)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.adapter = RecyclerViewAdapter(this, allPubs, findNavController())
 
         return view
     }

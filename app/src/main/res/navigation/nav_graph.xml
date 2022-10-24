@@ -46,5 +46,23 @@
         android:name="com.example.myapp.PubDetail"
         android:label="Pub Detail"
         tools:layout="@layout/fragment_pub_detail"
-        />
+        >
+        <argument android:name="latitude"
+            app:argType="string" />
+        <argument
+            android:name="longitude"
+            app:argType="string" />
+        <argument
+            android:name="opening_hours"
+            app:argType="string" />
+        <argument
+            android:name="outdoor_seating"
+            app:argType="string" />
+        <argument
+            android:name="website"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
 </navigation>
