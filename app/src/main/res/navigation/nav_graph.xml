@@ -36,5 +36,5 @@
         android:id="@+id/companiesList"
         android:name="com.example.myapp.PubsClass"
         android:label="fragment_companies_list_list"
-        tools:layout="@layout/fragment_companies_list_list" />
+        tools:layout="@layout/fragment_pubs_class_list" />
 </navigation>

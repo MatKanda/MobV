@@ -19,26 +19,19 @@ class Utils (){
         return jsonString
     }
 
-    fun getJsonData(jsonFileString: String): List<Pub> {
-        val allPubs:MutableList<String> = ArrayList()
+    fun getJsonData(jsonFileString: String):MutableList<Pub>{
+        val allPubs:MutableList<Pub> = ArrayList()
 
         Log.i("data", jsonFileString)
         val gson = Gson()
         val listPubType = object : TypeToken<PubParent>() {}.type
 
         var pubs: PubParent = gson.fromJson(jsonFileString, listPubType)
-//        pubs.elements.forEachIndexed { idx, pub -> Log.i("data", "> Item $idx:\n$pub, name:${pub.tags.get("name")}") }
-        pubs.elements.forEachIndexed {
-                _, pub -> Log.i("data", ">\n, name:${pub.tags["name"]}, lat: ${pub.lat}, lng: ${pub.lon}")
-            pub.tags["name"]?.let { allPubs.add(it) }
-        }
-        System.out.println()
+        pubs.elements.forEachIndexed { idx, pub -> }
+        pubs.elements.forEachIndexed { idx, pub ->
+            Log.i("data", "> Item $idx:\n$pub, name:${pub.tags.get("name")}")
+            allPubs.add(pub)}
 
-//        return allPubs
-        return listOf<Pub>(
-            Pub(1f,"Omg", "12", "15",  hashMapOf<String,String>("jeden" to "jeden", "dva" to "dva")),
-            Pub(2f,"Omg2", "12", "15",  hashMapOf<String,String>("jeden" to "jeden", "dva" to "dva")),
-            Pub(3f,"Omg3", "12", "15",  hashMapOf<String,String>("jeden" to "jeden", "dva" to "dva"))
-        )
+        return allPubs
     }
 }

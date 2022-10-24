@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 import com.example.myapp.placeholder.PlaceholderContent.PlaceholderItem
+import com.example.myapp.process_json.Affirmation
 import com.example.myapp.process_json.Pub
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
-class RecyclerViewAdapter(private val context: PubsClass, private val pubs: List<Pub>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(private val context: PubsClass, private val dataset: List<Pub>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.item_name)
@@ -36,12 +37,14 @@ class RecyclerViewAdapter(private val context: PubsClass, private val pubs: List
 //        holder.idView.text = item.id
 //        holder.contentView.text = item.content
 
-        val pub = pubs[position]
-        holder.textView.text =  context.resources.getString(pub.id.toInt())
+        val pub = dataset[position]
+        holder.textView.text = pub.tags.get("name")
+//        holder.textView.text =  context.resources.getString(pub.id.toInt())
+//        holder.textView.text =  context.resources.getText(pub.tags.get("name"))
     }
 
     override fun getItemCount(): Int {
-        return pubs.size;
+        return dataset.size;
     }
 
 

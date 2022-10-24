@@ -27,11 +27,11 @@ class MainActivity : AppCompatActivity() {
 //        val jsonFileName = "pubs.json"
 //        val jsonFileString = utils.getJsonDataFromAsset(applicationContext, jsonFileName)
 //
-//        var allPubs:MutableList<String> = ArrayList()
+//        var allPubs:MutableList<Pub> = ArrayList()
 //        if (jsonFileString != null) {
 //            allPubs = utils.getJsonData(jsonFileString)
 //        }
-//        System.out.println()
+        System.out.println()
 
 
 
@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         setupActionBarWithNavController(navController)
-
 
     }
 
