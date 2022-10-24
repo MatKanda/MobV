@@ -5,6 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.widget.Button
+import android.widget.EditText
+import androidx.navigation.Navigation.findNavController
 
 import com.example.myapp.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.myapp.process_json.Affirmation
@@ -17,15 +22,11 @@ import com.example.myapp.process_json.Pub
 class RecyclerViewAdapter(private val context: PubsClass, private val dataset: List<Pub>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.item_name)
+        val textView: TextView = view.findViewById(R.id.pub_name)
     }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
-//        return ViewHolder(
-//            FragmentCompaniesListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-//        )
         // create a new view
         val adapterLayout = LayoutInflater.from(parent.context).inflate(R.layout.fragment_companies_list, parent, false)
 
@@ -33,14 +34,13 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: L
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val item = items[position]
-//        holder.idView.text = item.id
-//        holder.contentView.text = item.content
 
         val pub = dataset[position]
         holder.textView.text = pub.tags.get("name")
+        holder.textView.setOnClickListener{
+//            findNavController().navigate(R.id.action_companiesList_to_pubDetail)
+        }
 //        holder.textView.text =  context.resources.getString(pub.id.toInt())
-//        holder.textView.text =  context.resources.getText(pub.tags.get("name"))
     }
 
     override fun getItemCount(): Int {

@@ -25,10 +25,6 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class SecondFragment : Fragment() {
-//    private var _binding: FragmentSecondBinding? = null
-//    private val binding get() = _binding!!
-
-    // get the arguments from the Registration fragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +32,6 @@ class SecondFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_second, container, false)
-//        _binding = FragmentSecondBinding.inflate(inflater, container, false)
-//        val view = binding.root
         return view
     }
 
@@ -57,7 +51,6 @@ class SecondFragment : Fragment() {
         view.findViewById<Button>(R.id.open_map).setOnClickListener {
             val geoUri =
                 "http://maps.google.com/maps?q=loc:".plus(latitude).plus( ",").plus(longitude)
-//            val uri = String.format(Locale.ENGLISH, "geo:%f,%f", latitude, longitude)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri))
             context!!.startActivity(intent)
         }

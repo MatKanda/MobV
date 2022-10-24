@@ -23,21 +23,14 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class FirstFragment : Fragment() {
-//    private var _binding: FragmentFirstBinding? = null
-//    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-//        _binding = FragmentFirstBinding.inflate(inflater, container, false)
-//        val view = binding.root
         val view = inflater.inflate(R.layout.fragment_first, container, false)
-//        val button = view.findViewById<Button>(R.id.send_button)
-//        button.setOnClickListener {
-//            findNavController().navigate(R.id.action_firstFragment_to_secondFragment)
-//        }
+
         val button = view.findViewById<Button>(R.id.send_button)
         button.setOnClickListener {
             val name = view.findViewById<EditText?>(R.id.name).text.toString()
@@ -50,21 +43,6 @@ class FirstFragment : Fragment() {
             view.findNavController().navigate(action)
 
         }
-
-//        binding.sendButton.setOnClickListener {
-//            val name = binding.name.text.toString()
-//            val company_name = binding.companyName.text.toString()
-//            val longitude = binding.longitude.text.toString()
-//            val latitude = binding.latitude.text.toString()
-
-//            val data = Data(name, company_name, longitude, latitude)
-
-//            val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(data)
-
-//            findNavController().navigate(action)
-//
-
-
         return view
     }
 }

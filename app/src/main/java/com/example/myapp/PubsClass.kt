@@ -18,25 +18,6 @@ class PubsClass : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-//        val myDataset = Datasource().loadAffirmations()
-//        val recyclerView: RecyclerView  = findViewById(R.id.recycler_view)
-//        recyclerView.adapter = RecyclerViewAdapter(this, myDataset)
-
-//        val utils = Utils()
-//        val jsonFileName = "pubs.json"
-//        val jsonFileString = activity?.let { utils.getJsonDataFromAsset(it.getApplicationContext(), jsonFileName) }
-//
-//        var allPubs:List<Pub> = ArrayList()
-//        if (jsonFileString != null) {
-//            allPubs = utils.getJsonData(jsonFileString)
-//        }
-//        System.out.println()
-//
-//        val recyclerView = view?.findViewById<RecyclerView>(R.id.recycler_view)
-//        if (recyclerView != null) {
-//            recyclerView.adapter = RecyclerViewAdapter(this, allPubs)
-//        }
     }
 
     override fun onCreateView(

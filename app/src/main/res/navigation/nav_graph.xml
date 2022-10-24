@@ -35,6 +35,16 @@
     <fragment
         android:id="@+id/companiesList"
         android:name="com.example.myapp.PubsClass"
-        android:label="fragment_companies_list_list"
-        tools:layout="@layout/fragment_pubs_class_list" />
+        android:label="All pubs in the area"
+        tools:layout="@layout/fragment_pubs_class_list">
+        <action
+            android:id="@+id/action_companiesList_to_pubDetail"
+            app:destination="@id/pubDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/pubDetail"
+        android:name="com.example.myapp.PubDetail"
+        android:label="Pub Detail"
+        tools:layout="@layout/fragment_pub_detail"
+        />
 </navigation>
