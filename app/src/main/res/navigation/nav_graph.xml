@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_companiesList_to_pubDetail"
             app:destination="@id/pubDetail" />
+        <argument
+            android:name="position_from_detail"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/pubDetail"
@@ -64,5 +67,8 @@
         <argument
             android:name="name"
             app:argType="string" />
+        <argument
+            android:name="position_to_detail"
+            app:argType="integer" />
     </fragment>
 </navigation>

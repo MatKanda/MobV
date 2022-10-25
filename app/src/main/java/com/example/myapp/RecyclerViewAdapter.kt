@@ -1,5 +1,6 @@
 package com.example.myapp
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -12,19 +13,18 @@ import android.widget.EditText
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
-
 import com.example.myapp.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.myapp.process_json.Affirmation
 import com.example.myapp.process_json.Pub
+import androidx.navigation.fragment.navArgs
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
-class RecyclerViewAdapter(private val context: PubsClass, private val dataset: List<Pub>, private val navigation: NavController) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+
+class RecyclerViewAdapter(private val context: PubsClass, private val dataset: MutableList<Pub>, private val navigation: NavController)
+    : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.pub_name)
+        val deleteButton : Button = view.findViewById(R.id.delete_button)
     }
 
 
@@ -35,10 +35,15 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: L
         return ViewHolder(adapterLayout)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val pub = dataset[position]
         holder.textView.text = pub.tags.get("name")
+
+        holder.deleteButton.setOnClickListener {
+            dataset.remove(dataset[position])
+        }
 
         holder.textView.setOnClickListener{
             val name = pub.tags.get("name").orEmpty()
@@ -47,6 +52,7 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: L
             var openingHours = ""
             var outdoorSeating = ""
             var website = ""
+
             if (pub.tags.get("opening_hours") != null) {
                 openingHours = pub.tags.get("opening_hours")!!
             }else{
@@ -63,11 +69,9 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: L
                 website = "Unknown"
             }
 
-            val action = PubsClassDirections.actionCompaniesListToPubDetail(latitude, longitude, openingHours, outdoorSeating, website, name)
+            val action = PubsClassDirections.actionCompaniesListToPubDetail(latitude, longitude, openingHours, outdoorSeating, website, name, position)
             navigation.navigate(action)
-//            navigation.navigate(R.id.action_companiesList_to_pubDetail)
         }
-
 
     }
 
@@ -75,7 +79,4 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: L
         return dataset.size;
     }
 
-    private fun prepareData(){
-
-    }
 }
