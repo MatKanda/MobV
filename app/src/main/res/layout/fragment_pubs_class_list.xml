@@ -16,6 +16,7 @@
         android:layout_gravity="center"
         tools:listitem="@layout/fragment_companies_list" />
     <Button
+        android:id="@+id/sort_button"
         android:layout_width="145dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/recycler_view"

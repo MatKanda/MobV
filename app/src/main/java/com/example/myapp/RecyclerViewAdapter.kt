@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Button
 import androidx.navigation.NavController
+import com.example.myapp.process_json.MySingleton
 import com.example.myapp.process_json.Pub
 
 
@@ -59,7 +60,6 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: M
             val action = PubsClassDirections.actionCompaniesListToPubDetail(latitude, longitude, openingHours, outdoorSeating, website, name, position)
             navigation.navigate(action)
         }
-
 
     }
 

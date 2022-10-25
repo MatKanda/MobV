@@ -43,6 +43,9 @@
         <argument
             android:name="position_from_detail"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_companiesList_self"
+            app:destination="@id/companiesList" />
     </fragment>
     <fragment
         android:id="@+id/pubDetail"
@@ -70,5 +73,8 @@
         <argument
             android:name="position_to_detail"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_pubDetail_to_companiesList"
+            app:destination="@id/companiesList" />
     </fragment>
 </navigation>

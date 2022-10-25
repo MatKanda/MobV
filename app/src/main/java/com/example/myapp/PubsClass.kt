@@ -33,8 +33,12 @@ class PubsClass : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val view = inflater.inflate(R.layout.fragment_pubs_class_list, container, false)
+
+        view.findViewById<Button>(R.id.sort_button).setOnClickListener {
+            MySingleton.allPubs = MySingleton.allPubs.sortedByDescending{it.tags.get("name")}.reversed() as MutableList<Pub>
+            view.findNavController().navigate(R.id.action_companiesList_self)
+        }
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.adapter = RecyclerViewAdapter(this, MySingleton.allPubs, findNavController())

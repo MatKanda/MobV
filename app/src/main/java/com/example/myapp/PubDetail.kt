@@ -62,6 +62,7 @@ class PubDetail : Fragment() {
 
         view.findViewById<Button>(R.id.delete_pub_detail).setOnClickListener {
             MySingleton.allPubs.removeAt(position)
+            view.findNavController().navigate(R.id.action_pubDetail_to_companiesList)
         }
     }
 }

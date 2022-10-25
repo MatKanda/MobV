@@ -30,7 +30,7 @@ class Utils (){
         pubs.elements.forEachIndexed { idx, pub -> }
         pubs.elements.forEachIndexed { idx, pub ->
             Log.i("data", "> Item $idx:\n$pub, name:${pub.tags.get("name")}")
-            allPubs.add(pub)}
+            if(pub.tags.get("name") != null){allPubs.add(pub)}}
 
         return allPubs
     }

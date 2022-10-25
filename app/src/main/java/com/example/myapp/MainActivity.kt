@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         if (jsonFileString != null) {
             MySingleton.allPubs = utils.getJsonData(jsonFileString)
         }
-        System.out.println()
 
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
