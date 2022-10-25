@@ -12,7 +12,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
-import com.example.myapp.process_json.Datasource
+import com.example.myapp.process_json.MySingleton
+import com.example.myapp.process_json.MySingleton.allPubs
 import com.example.myapp.process_json.Pub
 import com.example.myapp.process_json.Utils
 import java.util.ArrayList
@@ -35,17 +36,8 @@ class PubsClass : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_pubs_class_list, container, false)
 
-        val utils = Utils()
-        val jsonFileName = "pubs.json"
-        val jsonFileString = this.context?.let { utils.getJsonDataFromAsset(it, jsonFileName) }
-
-        var allPubs:MutableList<Pub> = ArrayList()
-        if (jsonFileString != null) {
-            allPubs = utils.getJsonData(jsonFileString)
-        }
-
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerView.adapter = RecyclerViewAdapter(this, allPubs, findNavController())
+        recyclerView.adapter = RecyclerViewAdapter(this, MySingleton.allPubs, findNavController())
 
         return view
     }

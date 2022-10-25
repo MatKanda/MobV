@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.myapp.process_json.MySingleton
 import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -54,15 +55,13 @@ class PubDetail : Fragment() {
         view.findViewById<TextView>(R.id.pub_detail_website).text = website
 
         view.findViewById<Button>(R.id.pub_detail_map_button).setOnClickListener {
-            val geoUri =
-                "http://maps.google.com/maps?q=loc:".plus(latitude).plus( ",").plus(longitude)
+            val geoUri = "http://maps.google.com/maps?q=loc:".plus(latitude).plus( ",").plus(longitude)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri))
             context!!.startActivity(intent)
         }
 
         view.findViewById<Button>(R.id.delete_pub_detail).setOnClickListener {
-//            val action = PubDetailDirections.actionPubDetailToCompaniesList(position)
-//            view.findNavController().navigate(action)
+            MySingleton.allPubs.removeAt(position)
         }
     }
 }

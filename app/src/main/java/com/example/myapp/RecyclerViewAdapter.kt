@@ -6,17 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.widget.Button
-import android.widget.EditText
 import androidx.navigation.NavController
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
-import com.example.myapp.placeholder.PlaceholderContent.PlaceholderItem
-import com.example.myapp.process_json.Affirmation
 import com.example.myapp.process_json.Pub
-import androidx.navigation.fragment.navArgs
 
 
 class RecyclerViewAdapter(private val context: PubsClass, private val dataset: MutableList<Pub>, private val navigation: NavController)
@@ -24,7 +16,6 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: M
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.pub_name)
-        val deleteButton : Button = view.findViewById(R.id.delete_button)
     }
 
 
@@ -40,10 +31,6 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: M
 
         val pub = dataset[position]
         holder.textView.text = pub.tags.get("name")
-
-        holder.deleteButton.setOnClickListener {
-            dataset.remove(dataset[position])
-        }
 
         holder.textView.setOnClickListener{
             val name = pub.tags.get("name").orEmpty()

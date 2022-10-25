@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.airbnb.lottie.LottieAnimationView
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapp.process_json.MySingleton
 import com.example.myapp.process_json.Pub
 import com.example.myapp.process_json.PubParent
 import com.example.myapp.process_json.Utils
@@ -23,16 +24,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        val utils = Utils()
-//        val jsonFileName = "pubs.json"
-//        val jsonFileString = utils.getJsonDataFromAsset(applicationContext, jsonFileName)
-//
-//        var allPubs:MutableList<Pub> = ArrayList()
-//        if (jsonFileString != null) {
-//            allPubs = utils.getJsonData(jsonFileString)
-//        }
-        System.out.println()
+        val utils = Utils()
+        val jsonFileName = "pubs.json"
+        val jsonFileString = utils.getJsonDataFromAsset(applicationContext, jsonFileName)
 
+        var allPubs:MutableList<Pub> = ArrayList()
+        if (jsonFileString != null) {
+            MySingleton.allPubs = utils.getJsonData(jsonFileString)
+        }
+        System.out.println()
 
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
