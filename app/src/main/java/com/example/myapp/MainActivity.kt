@@ -20,6 +20,8 @@ import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
+    var allPubs:MutableList<Pub> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         val jsonFileName = "pubs.json"
         val jsonFileString = utils.getJsonDataFromAsset(applicationContext, jsonFileName)
 
-        var allPubs:MutableList<Pub> = ArrayList()
         if (jsonFileString != null) {
             MySingleton.allPubs = utils.getJsonData(jsonFileString)
         }

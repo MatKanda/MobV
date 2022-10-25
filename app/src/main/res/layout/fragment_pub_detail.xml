@@ -7,11 +7,22 @@
     tools:context=".PubDetail">
 
     <TextView
-        android:id="@+id/header_detail_pub_name"
+        android:id="@+id/header_detail_pub_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:text="Pub detail information"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="37sp"
+        android:paddingBottom="20dp"/>
+        <TextView
+        android:id="@+id/header_detail_pub_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/header_detail_pub_fragment"
+        app:layout_constraintTop_toBottomOf="@+id/header_detail_pub_fragment"
         android:text="@string/pub_name"
         android:gravity="center"
         android:textSize="30sp"/>
@@ -24,48 +35,13 @@
         android:textSize="20sp"
         android:gravity="center"
         android:paddingBottom="20dp"/>
-    <TextView
-        android:id="@+id/header_detail_pub_lon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/pub_detail_name"
-        app:layout_constraintTop_toBottomOf="@+id/pub_detail_name"
-        android:text="@string/longitude"
-        android:gravity="center"
-        android:textSize="30sp"/>
-    <TextView
-        android:id="@+id/pub_detail_lon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/header_detail_pub_lon"
-        app:layout_constraintTop_toBottomOf="@+id/header_detail_pub_lon"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:paddingBottom="20dp"/>
-    <TextView
-        android:id="@+id/header_detail_pub_lat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/pub_detail_lon"
-        app:layout_constraintTop_toBottomOf="@+id/pub_detail_lon"
-        android:text="@string/latitude"
-        android:gravity="center"
-        android:textSize="30sp" />
-    <TextView
-        android:id="@+id/pub_detail_lat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/header_detail_pub_lat"
-        app:layout_constraintTop_toBottomOf="@+id/header_detail_pub_lat"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:paddingBottom="20dp"/>
+
     <TextView
         android:id="@+id/header_detail_pub_opening_hours"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/pub_detail_lat"
-        app:layout_constraintTop_toBottomOf="@+id/pub_detail_lat"
+        app:layout_constraintStart_toStartOf="@+id/pub_detail_name"
+        app:layout_constraintTop_toBottomOf="@+id/pub_detail_name"
         android:text="@string/opening_hours"
         android:gravity="center"
         android:textSize="30sp" />
@@ -114,12 +90,51 @@
         android:textSize="20sp"
         android:gravity="center"
         android:paddingBottom="20dp"/>
-    <Button
-        android:id="@+id/pub_detail_map_button"
+
+    <TextView
+        android:id="@+id/header_detail_pub_lon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/pub_detail_website"
         app:layout_constraintTop_toBottomOf="@+id/pub_detail_website"
+        android:text="@string/longitude"
+        android:gravity="center"
+        android:textSize="30sp"/>
+    <TextView
+        android:id="@+id/pub_detail_lon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/header_detail_pub_lon"
+        app:layout_constraintTop_toBottomOf="@+id/header_detail_pub_lon"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:paddingBottom="20dp"/>
+    <TextView
+        android:id="@+id/header_detail_pub_lat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/pub_detail_lon"
+        app:layout_constraintTop_toBottomOf="@+id/pub_detail_lon"
+        android:text="@string/latitude"
+        android:gravity="center"
+        android:textSize="30sp" />
+    <TextView
+        android:id="@+id/pub_detail_lat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/header_detail_pub_lat"
+        app:layout_constraintTop_toBottomOf="@+id/header_detail_pub_lat"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:paddingBottom="20dp"/>
+
+    <Button
+        android:id="@+id/pub_detail_map_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/pub_detail_lat"
+        app:layout_constraintTop_toBottomOf="@+id/pub_detail_lat"
+        android:backgroundTint="@android:color/holo_green_dark"
         android:text="Show on map" />
     <Button
         android:id="@+id/delete_pub_detail"
@@ -127,6 +142,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@+id/pub_detail_map_button"
         app:layout_constraintTop_toBottomOf="@+id/pub_detail_map_button"
+        android:backgroundTint="@android:color/holo_red_dark"
         android:text="@string/delete_this_pub"/>
 
 

@@ -60,6 +60,7 @@ class RecyclerViewAdapter(private val context: PubsClass, private val dataset: M
             navigation.navigate(action)
         }
 
+
     }
 
     override fun getItemCount(): Int {
