@@ -41,7 +41,7 @@ class PubsClass : Fragment() {
         }
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerView.adapter = RecyclerViewAdapter(this, MySingleton.allPubs, findNavController())
+//        recyclerView.adapter = RecyclerViewAdapter(this, MySingleton.allPubs, findNavController())
 
         return view
     }

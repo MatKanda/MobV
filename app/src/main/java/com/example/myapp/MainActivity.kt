@@ -2,39 +2,43 @@ package com.example.myapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.MediaController
+import android.util.Log
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.airbnb.lottie.LottieAnimationView
-import android.util.Log
-import androidx.recyclerview.widget.RecyclerView
-import com.example.myapp.process_json.MySingleton
-import com.example.myapp.process_json.Pub
-import com.example.myapp.process_json.PubParent
-import com.example.myapp.process_json.Utils
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.example.myapp.network.PostBody
+import com.example.myapp.network.PubsApi
+import com.example.myapp.network.RetrofitHelper
+import com.example.myapp.process_json.*
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     var allPubs:MutableList<Pub> = ArrayList()
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val utils = Utils()
-        val jsonFileName = "pubs.json"
-        val jsonFileString = utils.getJsonDataFromAsset(applicationContext, jsonFileName)
+        GlobalScope.launch {
+            Log.i("abascasc: ", "Som v couroutine")
 
-        if (jsonFileString != null) {
-            MySingleton.allPubs = utils.getJsonData(jsonFileString)
+            val pubsApi = RetrofitHelper.getInstance().create(PubsApi::class.java)
+
+            val result = pubsApi.getAllPubs(PostBody())
+
+            result.body()?.documents?.forEachIndexed { idx, pub -> if(pub.tags.get("name") != null){allPubs.add(pub)}}
+
+            MySingleton.allPubs = allPubs
+            Log.i("abascasc: ", "Som na konci couroutine")
+
         }
 
-
+        Log.i("abascasc: ", "Som za couroutine")
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
         navController = navHostFragment.navController
 

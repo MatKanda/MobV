@@ -9,7 +9,6 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.example.myapp.databinding.FragmentFirstBinding
 import java.lang.Double
 
 // TODO: Rename parameter arguments, choose names that match
