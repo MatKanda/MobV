@@ -19,26 +19,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     var allPubs:MutableList<Pub> = ArrayList()
 
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        GlobalScope.launch {
-            Log.i("abascasc: ", "Som v couroutine")
-
-            val pubsApi = RetrofitHelper.getInstance().create(PubsApi::class.java)
-
-            val result = pubsApi.getAllPubs(PostBody())
-
-            result.body()?.documents?.forEachIndexed { idx, pub -> if(pub.tags.get("name") != null){allPubs.add(pub)}}
-
-            MySingleton.allPubs = allPubs
-            Log.i("abascasc: ", "Som na konci couroutine")
-
-        }
-
-        Log.i("abascasc: ", "Som za couroutine")
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
         navController = navHostFragment.navController
 

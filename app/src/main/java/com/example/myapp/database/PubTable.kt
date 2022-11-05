@@ -11,6 +11,8 @@ data class PubTable(
     @ColumnInfo(name = "name")
     val pubName: String,
     @ColumnInfo(name = "latitude")
+    val longitude: String,
+    @ColumnInfo(name = "longitude")
     val latitude: String,
     @ColumnInfo(name = "website")
     val website: String,

@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/companiesList"
-        android:name="com.example.myapp.PubsClass"
+        android:name="com.example.myapp.PubsClassFragment"
         android:label="All pubs in the area"
         tools:layout="@layout/fragment_pubs_class_list">
         <action

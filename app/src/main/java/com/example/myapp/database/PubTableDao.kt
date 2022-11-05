@@ -14,6 +14,9 @@ interface PubTableDao {
     @Delete
     suspend fun delete(pubTable: PubTable)
 
+    @Query("DELETE from pub")
+    fun deleteAll()
+
     @Query("SELECT * from pub WHERE id = :id")
     fun getItem(id: Int): Flow<PubTable>
 
