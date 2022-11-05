@@ -9,15 +9,15 @@ data class PubTable(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     @ColumnInfo(name = "name")
-    val pubName: String,
+    var pubName: String,
     @ColumnInfo(name = "latitude")
-    val longitude: String,
+    var longitude: String,
     @ColumnInfo(name = "longitude")
-    val latitude: String,
+    var latitude: String,
     @ColumnInfo(name = "website")
-    val website: String,
+    var website: String,
     @ColumnInfo(name = "opening_hours")
-    val opening_hours: String,
+    var opening_hours: String,
     @ColumnInfo(name = "outdoor_Seating")
-    val outdoor_Seating: String){
+    var outdoor_Seating: String){
 }
