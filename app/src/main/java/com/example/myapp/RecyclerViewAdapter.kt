@@ -80,8 +80,7 @@ class RecyclerViewAdapter() : ListAdapter<PubTable,RecyclerViewAdapter.ViewHolde
             }
 
             override fun areContentsTheSame(oldItem: PubTable, newItem: PubTable): Boolean {
-                return oldItem.pubName == newItem.pubName && oldItem.latitude == newItem.latitude && oldItem.longitude == newItem.longitude
-                        && oldItem.website == newItem.website && oldItem.opening_hours == newItem.opening_hours && oldItem.outdoor_Seating == newItem.outdoor_Seating
+                return oldItem.pubName == newItem.pubName
             }
         }
     }
