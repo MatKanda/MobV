@@ -5,8 +5,8 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PubTableDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(pubTable: PubTable)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(pubTable: PubTable):Long
 
     @Update
     suspend fun update(pubTable: PubTable)
@@ -15,7 +15,7 @@ interface PubTableDao {
     suspend fun delete(pubTable: PubTable)
 
     @Query("DELETE from pub")
-    fun deleteAll()
+    suspend fun deleteAll()
 
     @Query("SELECT * from pub WHERE id = :id")
     fun getItem(id: Int): Flow<PubTable>

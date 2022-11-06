@@ -1,9 +1,8 @@
 package com.example.myapp.database
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
+//@Entity(tableName = "pub", indices = [Index(value = ["name","latitude","longitude"], unique = true)])
 @Entity(tableName = "pub")
 data class PubTable(
     @PrimaryKey(autoGenerate = true)

@@ -84,16 +84,14 @@ class PubViewModel(private val pubTableDao: PubTableDao) : ViewModel() {
     }
 
 
-    private fun loadDataFromAPI() {
+     fun loadDataFromAPI() {
         viewModelScope.launch{
-            Log.i("abascasc: ", "Som v couroutine")
+            deleteAllPubs()
             val tmp:MutableList<Pub> = ArrayList()
 
             val pubsApi = RetrofitHelper.getInstance().create(PubsApi::class.java)
-
             val result = pubsApi.getAllPubs(PostBody())
-            result.body()?.documents?.forEach{
-                    pub -> if(pub.tags.get("name") != null){tmp.add(pub)} }
+            result.body()?.documents?.forEach{ pub -> if(pub.tags.get("name") != null){tmp.add(pub)} }
 
             for (i in 0 until tmp.size) {
                 val name = tmp[i].tags["name"]
@@ -103,33 +101,11 @@ class PubViewModel(private val pubTableDao: PubTableDao) : ViewModel() {
                 val opening_hours = if (tmp[i].tags["opening_hours"] == null) "Unknown" else tmp[i].tags["opening_hours"]
                 val outdoor_seating = if (tmp[i].tags["outdoor_seating"] == null) "Unknown" else tmp[i].tags["outdoor_seating"]
 
-                if (name != null) {
-                    if (website != null) {
-                        if (opening_hours != null) {
-                            if (outdoor_seating != null) {
-                                addNewItem(name, lat, lon, website, opening_hours, outdoor_seating)
-                            }
-                        }
-                    }
+                // just because kotlin is retarded and needs to null check everything _-_
+                if (name != null && website != null && opening_hours != null && outdoor_seating != null) {
+                    addNewItem(name, lat, lon, website, opening_hours, outdoor_seating)
                 }
             }
-//            result.body()?.documents?.forEach{ pub ->
-//                pub.tags.get("name")?.let {
-//                    addNewItem(
-//                        it,
-//                        pub.lat,
-//                        pub.lon,
-//                        pub.tags.get("website")!!,
-//                        pub.tags.get("opening_hours")!!,
-//                        pub.tags.get("outdoor_seating")!!
-//                    )
-//                }
-//            }
-//                addNewItem("asasa","aaaa", "aaaa", "aaaa", "aaaa", "aaaa" )
-//            deleteAllPubs()
-
-            Log.i("abascasc: ", "Som na konci couroutine")
-
         }
     }
 }

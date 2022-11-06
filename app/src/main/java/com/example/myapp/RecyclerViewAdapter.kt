@@ -1,19 +1,13 @@
 package com.example.myapp
 
 import android.annotation.SuppressLint
-import android.content.ClipData
-import androidx.recyclerview.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Button
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapp.database.PubTable
-import com.example.myapp.process_json.MySingleton
-import com.example.myapp.process_json.Pub
 import com.example.myapp.databinding.FragmentCompaniesListBinding
 
 
@@ -66,8 +60,8 @@ class RecyclerViewAdapter() : ListAdapter<PubTable,RecyclerViewAdapter.ViewHolde
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val current = getItem(position)
-        holder.bind(current)
+        val currentPub = getItem(position)
+        holder.bind(currentPub)
 
 //        navigate(getItem(position))
     }

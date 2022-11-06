@@ -2,27 +2,27 @@ package com.example.myapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.myapp.database.view_model.PubApplication
 import com.example.myapp.database.view_model.PubViewModel
 import com.example.myapp.database.view_model.PubViewModelFactory
-import com.example.myapp.process_json.MySingleton
-import com.example.myapp.process_json.Pub
 import com.example.myapp.databinding.FragmentPubsClassListBinding
 /**
  * A fragment representing a list of Items.
  */
 class PubsClassFragment : Fragment() {
+    lateinit var swipeContainer: SwipeRefreshLayout
+    var recyclerViewAdapter: RecyclerViewAdapter = RecyclerViewAdapter()
+
     private val viewModel: PubViewModel by activityViewModels {
         PubViewModelFactory(
             (activity?.application as PubApplication).database.pubTableDao()
@@ -36,8 +36,7 @@ class PubsClassFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,7 +51,12 @@ class PubsClassFragment : Fragment() {
             pubs -> pubs?.let { adapter.submitList(it) }
         })
 
-
+        swipeContainer = binding.refreshLayout
+        swipeContainer.setOnRefreshListener {
+            viewModel.loadDataFromAPI()
+            recyclerViewAdapter.notifyDataSetChanged()
+            swipeContainer.isRefreshing = false
+        }
 //        val view = inflater.inflate(R.layout.fragment_pubs_class_list, container, false)
 //
 //        view.findViewById<Button>(R.id.sort_button).setOnClickListener {
@@ -60,10 +64,6 @@ class PubsClassFragment : Fragment() {
 //            view.findNavController().navigate(R.id.action_companiesList_self)
 //        }
         return binding.root
-//        val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
-////        recyclerView.adapter = RecyclerViewAdapter(this, MySingleton.allPubs, findNavController())
-//
-//        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
