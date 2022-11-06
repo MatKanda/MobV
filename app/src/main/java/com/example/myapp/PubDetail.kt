@@ -9,9 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.myapp.process_json.MySingleton
 import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -45,7 +43,6 @@ class PubDetail : Fragment() {
         val openingHours = args.openingHours
         val outdoorSeating = args.outdoorSeating
         val website = args.website
-        val position = args.positionToDetail
 
         view.findViewById<TextView>(R.id.pub_detail_name).text = name
         view.findViewById<TextView>(R.id.pub_detail_lat).text = latitude
@@ -54,15 +51,23 @@ class PubDetail : Fragment() {
         view.findViewById<TextView>(R.id.pub_detail_outdoor_seating).text = outdoorSeating
         view.findViewById<TextView>(R.id.pub_detail_website).text = website
 
+        if (website != "Unknown"){
+            view.findViewById<TextView>(R.id.pub_detail_website).setOnClickListener {
+                val url = website
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(url)
+                startActivity(intent)
+            }
+        }
         view.findViewById<Button>(R.id.pub_detail_map_button).setOnClickListener {
             val geoUri = "http://maps.google.com/maps?q=loc:".plus(latitude).plus( ",").plus(longitude)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri))
             context!!.startActivity(intent)
         }
 
-        view.findViewById<Button>(R.id.delete_pub_detail).setOnClickListener {
-            MySingleton.allPubs.removeAt(position)
-            view.findNavController().navigate(R.id.action_pubDetail_to_companiesList)
-        }
+//        view.findViewById<Button>(R.id.delete_pub_detail).setOnClickListener {
+//            MySingleton.allPubs.removeAt(position)
+//            view.findNavController().navigate(R.id.action_pubDetail_to_companiesList)
+//        }
     }
 }

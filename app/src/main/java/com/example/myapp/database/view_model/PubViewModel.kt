@@ -52,9 +52,9 @@ class PubViewModel(private val pubTableDao: PubTableDao) : ViewModel() {
         insertItem(newPub)
     }
     private fun getNewItemEntry(pubName: String, latitude: String, longitude: String,website: String, opening_hours: String,outdoor_seating: String): PubTable {
-        var checkedWebsite:String
-        var checkedOpeningHours: String
-        var checkedOutdoorSeating: String
+        val checkedWebsite:String
+        val checkedOpeningHours: String
+        val checkedOutdoorSeating: String
 
         if (website.isNullOrBlank()  || website.isEmpty())
             checkedWebsite = "Unknown"
@@ -75,7 +75,7 @@ class PubViewModel(private val pubTableDao: PubTableDao) : ViewModel() {
             longitude = longitude,
             website = checkedWebsite,
             opening_hours = checkedOpeningHours,
-            outdoor_Seating = checkedOutdoorSeating
+            outdoor_Seating = checkedOutdoorSeating,
         )
     }
 
@@ -100,8 +100,9 @@ class PubViewModel(private val pubTableDao: PubTableDao) : ViewModel() {
                 val website = if (tmp[i].tags["website"] == null) "Unknown" else tmp[i].tags["website"]
                 val opening_hours = if (tmp[i].tags["opening_hours"] == null) "Unknown" else tmp[i].tags["opening_hours"]
                 val outdoor_seating = if (tmp[i].tags["outdoor_seating"] == null) "Unknown" else tmp[i].tags["outdoor_seating"]
+                val phone_number = if (tmp[i].tags["phone"] == null) "Unknown" else tmp[i].tags["phone"]
 
-                // just because kotlin is retarded and needs to null check everything _-_
+                // just because kotlin is retarded and needs to null check everything 154x _-_
                 if (name != null && website != null && opening_hours != null && outdoor_seating != null) {
                     addNewItem(name, lat, lon, website, opening_hours, outdoor_seating)
                 }

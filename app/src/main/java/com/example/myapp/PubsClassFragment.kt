@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.myapp.database.view_model.PubApplication
@@ -21,7 +22,6 @@ import com.example.myapp.databinding.FragmentPubsClassListBinding
  */
 class PubsClassFragment : Fragment() {
     lateinit var swipeContainer: SwipeRefreshLayout
-    var recyclerViewAdapter: RecyclerViewAdapter = RecyclerViewAdapter()
 
     private val viewModel: PubViewModel by activityViewModels {
         PubViewModelFactory(
@@ -44,7 +44,8 @@ class PubsClassFragment : Fragment() {
         _binding = FragmentPubsClassListBinding.inflate(inflater, container, false)
         binding.recyclerView.layoutManager = LinearLayoutManager(this.context)
 
-        var adapter = RecyclerViewAdapter()
+
+        val adapter = RecyclerViewAdapter(findNavController())
         binding.recyclerView.adapter = adapter
 
         viewModel.allPubs.observe(viewLifecycleOwner,Observer{
@@ -54,7 +55,7 @@ class PubsClassFragment : Fragment() {
         swipeContainer = binding.refreshLayout
         swipeContainer.setOnRefreshListener {
             viewModel.loadDataFromAPI()
-            recyclerViewAdapter.notifyDataSetChanged()
+            adapter.notifyDataSetChanged()
             swipeContainer.isRefreshing = false
         }
 //        val view = inflater.inflate(R.layout.fragment_pubs_class_list, container, false)

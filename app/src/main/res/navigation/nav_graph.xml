@@ -70,9 +70,6 @@
         <argument
             android:name="name"
             app:argType="string" />
-        <argument
-            android:name="position_to_detail"
-            app:argType="integer" />
         <action
             android:id="@+id/action_pubDetail_to_companiesList"
             app:destination="@id/companiesList" />

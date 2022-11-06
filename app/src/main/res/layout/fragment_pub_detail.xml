@@ -136,14 +136,14 @@
         app:layout_constraintTop_toBottomOf="@+id/pub_detail_lat"
         android:backgroundTint="@android:color/holo_green_dark"
         android:text="Show on map" />
-    <Button
-        android:id="@+id/delete_pub_detail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/pub_detail_map_button"
-        app:layout_constraintTop_toBottomOf="@+id/pub_detail_map_button"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:text="@string/delete_this_pub"/>
+<!--    <Button-->
+<!--        android:id="@+id/delete_pub_detail"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/pub_detail_map_button"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/pub_detail_map_button"-->
+<!--        android:backgroundTint="@android:color/holo_red_dark"-->
+<!--        android:text="@string/delete_this_pub"/>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
